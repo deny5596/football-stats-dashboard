@@ -36,6 +36,12 @@
       "@lib/*": [
         "./lib/*"
       ],
+      "@schema/*": [
+        "./schema/*"
+      ],
+      "@server/*": [
+        "./server/*"
+      ],
       "@styles/*": [
         "./styles/*"
       ],
