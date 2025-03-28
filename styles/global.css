@@ -49,3 +49,198 @@ td,
 th {
   border: 2px solid black;
 }
+
+input[type="text"],
+input[type="password"] {
+  border-radius: 15px;
+  border: 2px solid black;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  padding: 4px 4px 4px 10px;
+}
+
+select,
+option {
+  border-radius: 15px;
+  border: 2px solid black;
+}
+
+:root {
+  --primary-color: #1e40af;
+  --secondary-color: #ffffff;
+  --border-color: #d1d5db;
+  --input-bg: #f3f4f6;
+  --button-hover-color: #2563eb;
+  --sidebar-bg: #f8fafc;
+  --text-color: #333;
+  --input-focus-border-color: #1e40af;
+}
+
+.sidebar {
+  background-color: var(--sidebar-bg);
+  /* width: 250px; */
+  position: relative;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+}
+
+.sidebar .logo {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding-left: 20px;
+}
+
+.sidebar ul li {
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: 400;
+  display: block;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border-radius: 5px;
+}
+
+input,
+textarea,
+select {
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg);
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--input-focus-border-color);
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: inline-block;
+  color: var(--primary-color);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #aaa;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
+  background-color: var(--button-hover-color);
+}
+
+select {
+  appearance: none;
+  background-color: var(--input-bg);
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+select:focus {
+  border-color: var(--input-focus-border-color);
+}
+
+select.w-full {
+  margin-bottom: 20px;
+}
+
+option {
+  padding: 10px;
+}
+
+th,
+td {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid var(--border-color);
+}
+
+th {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+tr:hover {
+  background-color: #f3f4f6;
+}
+
+tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 2px 2px;
+  border-radius: 20px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 300;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="text"][placeholder="Username"],
+input[type="password"][placeholder="Password"] {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .content {
+    margin-left: 200px;
+  }
+
+  .sidebar ul li a {
+    font-size: 0.9rem;
+  }
+
+  .flex-wrap {
+    flex-direction: column;
+  }
+
+  button,
+  input[type="button"],
+  input[type="submit"] {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+}
