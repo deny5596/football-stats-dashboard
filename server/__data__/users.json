@@ -1,0 +1,30 @@
+[
+  {
+    "id": "e62c947b-e78f-4f17-9059-3004cb06089c",
+    "name": "Deny",
+    "username": "deny",
+    "password": "deny123",
+    "role": "viewer"
+  },
+  {
+    "id": "1",
+    "name": "Admin",
+    "username": "admin",
+    "password": "admin123",
+    "role": "admin"
+  },
+  {
+    "id": "2",
+    "name": "Viewer",
+    "username": "viewer",
+    "password": "viewer123",
+    "role": "viewer"
+  },
+  {
+    "id": "cc5226f5-ac1c-4aa8-aba8-66738504d036",
+    "name": "Temp",
+    "username": "temp",
+    "password": "temp123",
+    "role": "admin"
+  }
+]
