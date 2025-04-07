@@ -1,31 +1,48 @@
-import { loadCsvData } from "../loadCsvData";
-import { saveCsvData } from "../saveCsvData";
+import { loadCsvData } from "@server/loadCsvData";
+import { saveCsvData } from "@server/saveCsvData";
 
 import { generateToken } from "@lib/auth";
 import users from "@server/__data__/users.json";
 
 export const resolvers = {
   Query: {
-    players: async (_: any, { after = 0, first, filter, sortBy }) => {
+    players: async (
+      _: any,
+      {
+        after = 0,
+        first,
+        filter,
+        sortBy,
+      }: {
+        after: number;
+        first: number;
+        filter: {
+          nationality: string;
+          club: string;
+          position: string;
+        };
+        sortBy: string;
+      }
+    ) => {
       let filteredPlayers = await loadCsvData();
 
       if (filter) {
         if (filter.nationality) {
           filteredPlayers = filteredPlayers.filter((player) =>
-            player.nationality
-              .toLowerCase()
+            player?.nationality
+              ?.toLowerCase()
               .includes(filter.nationality.toLowerCase())
           );
         }
         if (filter.club) {
           filteredPlayers = filteredPlayers.filter((player) =>
-            player.club.toLowerCase().includes(filter.club.toLowerCase())
+            player?.club?.toLowerCase().includes(filter.club.toLowerCase())
           );
         }
         if (filter.position) {
           filteredPlayers = filteredPlayers.filter((player) =>
-            player.position
-              .toLowerCase()
+            player?.position
+              ?.toLowerCase()
               .includes(filter.position.toLowerCase())
           );
         }
