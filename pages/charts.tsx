@@ -1,7 +1,11 @@
 import DashboardLayout from "@components/DashboardLayout";
 import GoalsChart from "@components/GoalsChart";
 import Loading from "@components/Loading";
+import ErrorPage from "@components/ErrorPage";
+
 import { GET_TOP_PLAYERS_CHART_QUERY } from "@lib/queries/TopPlayersForChart.Query";
+import type { TopPlayersForChartQuery } from "../__generated__/TopPlayersForChartQuery.graphql";
+
 import { useLazyLoadQuery } from "react-relay";
 import {
   BarChart,
@@ -15,13 +19,19 @@ import {
 } from "recharts";
 
 export default function ChartsPage() {
-  const data = useLazyLoadQuery(
-    GET_TOP_PLAYERS_CHART_QUERY,
-    {},
-    { fetchPolicy: "store-and-network" }
-  );
+  let data;
 
-  if (!data) return <Loading />;
+  try {
+    data = useLazyLoadQuery<TopPlayersForChartQuery>(
+      GET_TOP_PLAYERS_CHART_QUERY,
+      {},
+      { fetchPolicy: "store-and-network" }
+    );
+
+    if (!data) return <Loading />;
+  } catch (error) {
+    return <ErrorPage />;
+  }
 
   const topGoals = data?.topPlayersForChart?.topGoals || [];
   const topAssists = data?.topPlayersForChart?.topAssists || [];
@@ -41,7 +51,7 @@ export default function ChartsPage() {
             <h3 className="text-xl font-bold mb-4 text-center">Goals Chart</h3>
             <div className="h-[300px]">
               <ResponsiveContainer width="100%" height="100%">
-                <GoalsChart players={topGoals} />
+                <GoalsChart players={[...topGoals]} />
               </ResponsiveContainer>
             </div>
           </div>
@@ -70,7 +80,7 @@ export default function ChartsPage() {
             </h3>
             <div className="h-[300px]">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={topAssists}>
+                <BarChart data={[...topAssists]}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="name" />
                   <YAxis />

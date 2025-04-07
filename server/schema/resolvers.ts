@@ -3,6 +3,7 @@ import { saveCsvData } from "@server/saveCsvData";
 
 import { generateToken } from "@lib/auth";
 import users from "@server/__data__/users.json";
+import { Player } from "@interfaces/index";
 
 export const resolvers = {
   Query: {
@@ -51,12 +52,16 @@ export const resolvers = {
       // Sorting logic
       if (sortBy === "NAME") {
         filteredPlayers = filteredPlayers.sort((a, b) =>
-          a.name.localeCompare(b.name)
+          (a.name ?? "").localeCompare(b.name ?? "")
         );
       } else if (sortBy === "GOALS") {
-        filteredPlayers = filteredPlayers.sort((a, b) => b.goals - a.goals);
+        filteredPlayers = filteredPlayers.sort(
+          (a, b) => (b.goals ?? 0) - (a.goals ?? 0)
+        );
       } else if (sortBy === "ASSISTS") {
-        filteredPlayers = filteredPlayers.sort((a, b) => b.assists - a.assists);
+        filteredPlayers = filteredPlayers.sort(
+          (a, b) => (b.assists ?? 0) - (a.assists ?? 0)
+        );
       }
 
       const totalPlayers = filteredPlayers.length - 1;
@@ -119,7 +124,10 @@ export const resolvers = {
 
       if (!user) throw new Error("Invalid credentials");
 
-      const token = generateToken(user);
+      const token = generateToken({
+        ...user,
+        role: user.role as "viewer" | "admin",
+      });
       console.log(user);
       return { ...user, token };
     },
@@ -128,7 +136,7 @@ export const resolvers = {
       if (!user || user.role !== "admin") throw new Error("Unauthorized");
       const data = await loadCsvData();
       data.push(newPlayer);
-      await saveCsvData(data);
+      await saveCsvData(data as Player[]);
       return newPlayer;
     },
   },

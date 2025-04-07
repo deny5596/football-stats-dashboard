@@ -1,7 +1,7 @@
 import { PieChart, Pie, Tooltip, ResponsiveContainer, Cell } from "recharts";
 
 type Props = {
-  players: { id: number; name: string; goals: number }[];
+  players: { id: string; name: string; goals: number }[];
 };
 
 const COLORS = [
