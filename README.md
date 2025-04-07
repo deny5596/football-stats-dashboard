@@ -64,7 +64,26 @@ A `type-check` script is also added to `package.json`, which runs TypeScript's `
 
 ### Instructions on running the application
 
-> Make sure `__data__` directory, has the `dataset.csv` file and the `__generated__` directory exists in the project folder.
-> Run the command `npm run relay` for compiling and executing queries using relay.
-> Execute the command `npm run dev` for development environment.
-> Execute the command `npm run build` and then `npm start` for production environment.
+Make sure `__data__` directory, has the `dataset.csv` file and the `__generated__` directory exists in the project folder.
+
+Run the command for compiling and executing queries using relay.
+
+```shell
+npm run relay
+```
+
+Execute the command for development environment.
+
+```shell
+npm run dev
+```
+
+Execute the commands for production environment.
+
+```shell
+npm run build
+```
+
+```shell
+npm start
+```
