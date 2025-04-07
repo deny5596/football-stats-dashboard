@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { Player } from "./loadCsvData";
+import { Player } from "@interfaces/index";
 
 export const saveCsvData = async (players: Player[]): Promise<void> => {
   const filePath = path.join(process.cwd(), "__data__", "dataset.csv");

@@ -1,8 +1,10 @@
 import { ReactNode, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Sidebar from "./Sidebar";
-import Header from "./Header";
-import Loading from "./Loading";
+
+import Sidebar from "@components/Sidebar";
+import Header from "@components/Header";
+import Loading from "@components/Loading";
+
 import { User } from "@interfaces/index";
 
 interface DashboardLayoutProps {
