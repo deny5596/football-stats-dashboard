@@ -61,3 +61,10 @@ When we run `next dev` the next time, Next.js will start looking for any `.ts` o
 Next.js has built-in TypeScript declarations, so we'll get autocompletion for Next.js' modules straight away.
 
 A `type-check` script is also added to `package.json`, which runs TypeScript's `tsc` CLI in `noEmit` mode to run type-checking separately. You can then include this, for example, in your `test` scripts.
+
+### Instructions on running the application
+
+> Make sure `__data__` directory, has the `dataset.csv` file and the `__generated__` directory exists in the project folder.
+> Run the command `npm run relay` for compiling and executing queries using relay.
+> Execute the command `npm run dev` for development environment.
+> Execute the command `npm run build` and then `npm start` for production environment.
