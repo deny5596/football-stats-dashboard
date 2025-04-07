@@ -2,3 +2,50 @@
 @import "tailwindcss/preflight";
 
 @tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f9fafb;
+  @apply bg-gray-50 text-gray-900;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+table {
+  font-size: 0.95rem;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border-color);
+}
+
+input,
+select {
+  transition: border-color 0.2s ease-in-out;
+  outline: none;
+}
+
+table th,
+table td {
+  padding: 0.5rem;
+}
+
+table,
+tr,
+td,
+th {
+  border: 2px solid black;
+}
